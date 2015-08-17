@@ -1,0 +1,45 @@
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+/*keep curlies from showing*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
+nav {
+  background: #f6f4f6;
+  border: 1px solid darkgrey;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px; }
+
+.pos {
+  color: green; }
+
+.neg {
+  color: red; }
+
+form {
+  margin-bottom: 30px;
+  margin-left: 30px; }
+
+article {
+  background: #f6f4f6;
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+  width: 60%;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 30px; }
+
+img {
+  border: 1px solid darkgrey;
+  float: left; }
+
+input {
+  padding: 5px;
+  border-radius: 2px;
+  border: 0;
+  border: 1px solid darkgrey; }
+
+select {
+  border: 0; }

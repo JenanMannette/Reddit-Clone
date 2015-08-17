@@ -1,0 +1,8 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/*keep curlies from showing*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
