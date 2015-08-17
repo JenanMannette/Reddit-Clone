@@ -1,1 +1,1 @@
-# Reddit-Clone built using Angularjs
+# Reddit-Clone built using Angular.js
