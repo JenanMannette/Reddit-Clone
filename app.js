@@ -1,6 +1,8 @@
 var app = angular.module("redditApp", ['ngAnimate']);
 
 app.controller('Reddit', function ($scope) {
+    $scope.formClick = 0;
+
     $scope.articles = [
         {
             title: 'Pizza, the Hangover Cure',
@@ -10,7 +12,7 @@ app.controller('Reddit', function ($scope) {
             votes: -2,
             date: moment(1439850968931).calendar(),
             allComments: 0,
-            comments: []
+            comments: [{person: 'Jenan', message: 'Pizza, pizza! 🍕'}]
         },
         {
             title: 'Everything is Better With Bacon',
@@ -61,16 +63,19 @@ app.controller('Reddit', function ($scope) {
         info.votes--;
     };
     $scope.show = function(){
-        if ($scope.form === 0) {
-            $scope.form = 1;
+        if ($scope.formClick === 0) {
+            $scope.formClick = 1;
         } else {
-            $scope.form = 0;
+            $scope.formClick = 0;
         }
     };
 
     $scope.showComments = function () {
+        console.log(this)
+        console.log(this.allComments)
         if (this.allComments === 0) {
             this.allComments = 1;
+            return;
         }
         else {
             this.allComments = 0;
@@ -78,6 +83,8 @@ app.controller('Reddit', function ($scope) {
     };
 
     $scope.newComment = function () {
+        console.log(this)
+        console.log(this.submitNewComment)
         if (this.submitNewComment === 0) {
             this.submitNewComment = 1;
         }

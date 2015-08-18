@@ -6,3 +6,23 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+body {
+  background: url("bg.jpg") no-repeat;
+  background-size: cover
+}
+
+html, input, select {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: lighter;
+}
+
+h3 {
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+select {
+  font-size: 16px;
+}

@@ -1,31 +1,58 @@
-
-form {
-  margin-bottom: 30px;
-  margin-left: 30px;
-}
-
 article {
   background: rgb(246, 244, 246);
   border: 1px solid darkgrey;
   border-radius: 5px;
-  width: 60%;
+  width: 80%;
   padding: 20px;
-  margin-bottom: 20px;
-  margin-left: 30px;
+  margin: 20px auto;
 }
 
 img {
   border: 1px solid darkgrey;
   float: left;
+  margin-right: 10px;
 }
 
-input {
+input, textarea {
   padding: 5px;
   border-radius: 2px;
   border: 0;
   border: 1px solid darkgrey;
 }
 
+form input, textarea {
+  width: 80%;
+}
+
+li {
+  margin: 10px 20px;
+}
+
 select {
   border: 0;
+}
+
+label {
+  display: inline-block;
+  width: 80px;
+  margin-top: 10px;
+}
+
+.comments {
+  width: 50%;
+  margin-left: -10px;
+}
+
+.post {
+  text-align: center;
+}
+
+.post label {
+  text-align: left;
+}
+
+.submit {
+  width: 120px;
+  height: 30px;
+  margin-top: 10px;
 }

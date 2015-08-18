@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Reddit Clone</title>
-    <link rel="stylesheet" href="http://reset5.googlecode.com/hg/reset.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="normalize.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
@@ -12,17 +13,18 @@
 
     <nav>
         Reddit Clone
-        <span ng-click="show()"><i class="fa fa-plus"></i>Submit Post</span>
+        <span ng-click="show()" class="nav"><i class="fa fa-plus"></i> Submit Post</span>
         <input type="text" class="search" placeholder="Search" ng-model="search"/>
-        Sort by <select name="articles" id="articles" ng-model="selected" ng-init="selected = '-votes'">
-            <option value="-votes">Votes</option>
-            <option value="-date">Date</option>
-            <option value="title">Title</option>
-        </select>
+        <span class="nav">Sort by <select name="articles" id="articles" ng-model="selected" ng-init="selected = '-votes'">
+                <option value="-votes">Votes</option>
+                <option value="-date">Date</option>
+                <option value="title">Title</option>
+            </select>
+        </span>
     </nav>
 
 
-    <form ng-submit="submitPost()" ng-show="form > 0">
+    <form ng-submit="submitPost()" ng-show="formClick > 0" class="post">
         <p>
             <label for="title">Title</label><br>
             <input type="text" id="title" placeholder="Title" ng-model="title" required>
@@ -37,17 +39,17 @@
         </p>
         <p>
             <label for="description">Description</label><br>
-            <input type="text" id="description" placeholder="Description" ng-model="description" required>
+            <textarea id="description" placeholder="Description" ng-model="description" required></textarea>
         </p>
-        <input type="submit" value="Submit Post">
+        <input type="submit" value="Submit Post" class="submit">
     </form>
 
 
     <article ng-repeat="info in articles | filter: search | orderBy: selected">
         <img ng-src="{{info.image}}" alt="image" height="150" width="200"/><br>
-        {{info.title}} | <i class="fa fa-arrow-up" ng-click="upVote(info)"></i><i class="fa fa-arrow-down" ng-click="downVote(info)"></i><span ng-class="{pos: info.votes > 0, neg: info.votes < 0}"> {{info.votes}}</span>
-        <h6>By: {{info.author}}</h6><br>
-        <p>{{info.description}}</p><br>
+        <h3>{{info.title}}</h3> | <i class="fa fa-arrow-up" ng-click="upVote(info)"></i> <i class="fa fa-arrow-down" ng-click="downVote(info)"></i><span ng-class="{pos: info.votes > 0, neg: info.votes < 0}"> {{info.votes}}</span>
+        <p>By: {{info.author}}</p>
+        <p>{{info.description}}</p>
         <i class="fa fa-ca,lendar"></i> <span>{{info.date}}</span> | <a ng-click="showComments()"><i class="fa fa-commenting"></i> {{info.comments.length}}
             <ng-pluralize count="info.comments.length" when="
                 {
@@ -57,18 +59,19 @@
             </ng-pluralize></a> | <a ng-click="newComment()"><i class="fa fa-pencil"></i> Add Comment</a>
 
         <div ng-show="allComments > 0" ng-repeat="comment in info.comments" class="comments">
-            <h3>
-                {{comment.person}}: {{comment.message}}
-            </h3>
+                <ul>
+                    <li>{{comment.person}} says "{{comment.message}}"</li>
+                </ul>
         </div>
-        <form ng-show="submitNewComment > 0" ng-submit="addComment(info.comments)">
+
+        <form ng-show="submitNewComment > 0" ng-submit="addComment(info.comments)" class="comments">
             <label for="person">Author</label>
             <input type="text" id="person" ng-model="person">
-
+            <br>
             <label for="message">Message</label>
             <input type="text" id="message" ng-model="message">
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="submit">
         </form>
     </article>
 
