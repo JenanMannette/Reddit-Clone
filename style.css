@@ -5,6 +5,32 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
+.ng-enter {
+  transition: 0.75s;
+  opacity: 0; }
+
+.ng-enter-stagger {
+  transition-delay: 0.1s; }
+
+.ng-leave-stagger {
+  transition-delay: 0.1s; }
+
+.ng-enter-active {
+  opacity: 1; }
+
+.ng-leave {
+  transition: 0.75s;
+  opacity: 1; }
+
+.ng-leave-active {
+  opacity: 0; }
+
+.ng-hide-add {
+  animation: 0.9s lightSpeedOut ease; }
+
+.ng-hide-remove {
+  animation: 0.5s flipInX ease; }
+
 nav {
   background: #f6f4f6;
   border: 1px solid darkgrey;

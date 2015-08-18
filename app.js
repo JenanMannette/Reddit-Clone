@@ -1,23 +1,36 @@
-var app = angular.module("redditApp", ['ngSanitize']);
+var app = angular.module("redditApp", ['ngAnimate']);
 
 app.controller('Reddit', function ($scope) {
     $scope.articles = [
         {
             title: 'Pizza, the Hangover Cure',
             author: 'Dennis Muller',
-            image: 'http://foodporndaily.com/pictures/gooey-melty-thin-crust-cheese-pizza.jpg',
+            image: 'http://media.giphy.com/media/9KCNcFVQmZhRK/giphy.gif',
             description: 'Bacon ipsum dolor amet cupim ex pork chop, exercitation turkey tenderloin duis. Ut veniam short ribs andouille pig adipisicing rump cow laborum fatback pancetta. Alcatra ball tip sunt short ribs meatloaf. Meatball labore dolore sed. Beef excepteur leberkas corned beef nulla alcatra minim jowl shankle velit ut. Consequat chicken velit tail short loin in ham est.Beef ribs in laborum short ribs occaecat in short loin spare ribs chuck drumstick eiusmod ad fugiat. Frankfurter turkey ut enim tail fatback, nisi biltong voluptate ball tip doner laboris in jerky minim. Excepteur veniam ipsum laboris. Cillum ex duis ham hock prosciutto, aute ipsum nisi rump officia elit strip steak tenderloin. Dolor reprehenderit exercitation proident minim, quis commodo ullamco mollit.',
-            votes: 0,
-            date: Date.now()
+            votes: -2,
+            date: moment(1439850968931).calendar(),
+            allComments: 0,
+            comments: []
         },
         {
             title: 'Everything is Better With Bacon',
             author: 'Harry Potter',
-            image: 'http://investorplace.com/wp-content/uploads/2014/02/bacon.jpg',
+            image: 'http://media.giphy.com/media/b9oyqJ6dLVXaw/giphy.gif',
             description: 'Bacon ipsum dolor amet cupim ex pork chop, exercitation turkey tenderloin duis. Ut veniam short ribs andouille pig adipisicing rump cow laborum fatback pancetta. Alcatra ball tip sunt short ribs meatloaf. Meatball labore dolore sed. Beef excepteur leberkas corned beef nulla alcatra minim jowl shankle velit ut. Consequat chicken velit tail short loin in ham est.Beef ribs in laborum short ribs occaecat in short loin spare ribs chuck drumstick eiusmod ad fugiat. Frankfurter turkey ut enim tail fatback, nisi biltong voluptate ball tip doner laboris in jerky minim. Excepteur veniam ipsum laboris. Cillum ex duis ham hock prosciutto, aute ipsum nisi rump officia elit strip steak tenderloin. Dolor reprehenderit exercitation proident minim, quis commodo ullamco mollit.',
             votes: 0,
-            date: Date.now()
-            //need an external library to format date (moment)
+            date: moment(1439850958631).calendar(),
+            allComments: 0,
+            comments: []
+        },
+        {
+            title: 'Giphy City',
+            author: 'Yo Mama',
+            image: 'http://media.giphy.com/media/tbapfDZ4mZJn2/giphy.gif',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            votes: 6,
+            date: moment(1439586968931).calendar(),
+            allComments: 0,
+            comments: []
         }
     ];
 
@@ -29,45 +42,60 @@ app.controller('Reddit', function ($scope) {
         info.image = $scope.image;
         info.votes = 0;
         info.comments = [];
-        info.date = new Date();
+        info.date = moment(Date.now()).calendar();
 
         $scope.articles.push(info);
-        $scope.comments.push(info);
         $scope.title = "";
         $scope.author = "";
         $scope.image = "";
         $scope.description = "";
-        $scope.comments = "";
-    };
-
-    $scope.addComment = function () {
-        if ($scope.comments === 0) {
-            $scope.comments = 1;
-        }
-        else {
-            $scope.comments = 0;
-        }
+        $scope.person = "";
+        $scope.comment = "";
     };
 
 
-    $scope.upVote = function (info) {
+    $scope.upVote = function(info){
         info.votes++;
     };
-
-    $scope.downVote = function (info) {
+    $scope.downVote = function(info){
         info.votes--;
     };
-
-    $scope.show = function () {
+    $scope.show = function(){
         if ($scope.form === 0) {
             $scope.form = 1;
-        }
-        else {
+        } else {
             $scope.form = 0;
         }
     };
 
+    $scope.showComments = function () {
+        if (this.allComments === 0) {
+            this.allComments = 1;
+        }
+        else {
+            this.allComments = 0;
+        }
+    };
 
+    $scope.newComment = function () {
+        if (this.submitNewComment === 0) {
+            this.submitNewComment = 1;
+        }
+        else {
+            this.submitNewComment = 0;
+        }
+    };
 
-
+    $scope.addComment = function (comments) {
+        if (this.person && this.message) {
+            var comment = {};
+            comment.person = this.person;
+            comment.message = this.message;
+            comments.push(comment);
+            this.submitNewComment = 0;
+            this.person = "";
+            this.message = "";
+            this.allComments = 0;
+        }
+    };
 });
