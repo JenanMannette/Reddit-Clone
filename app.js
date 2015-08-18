@@ -53,8 +53,40 @@ app.controller('Reddit', function ($scope) {
         $scope.description = "";
         $scope.person = "";
         $scope.comment = "";
+        $scope.formClick = 0;
     };
 
+    $scope.addComment = function (comments) {
+        if (this.person && this.message) {
+            var comment = {};
+            comment.person = this.person;
+            comment.message = this.message;
+            comments.push(comment);
+            this.person = "";
+            this.message = "";
+            this.submitNewComment = 0;
+            this.allComments = 0;
+        }
+    };
+
+    $scope.showComments = function () {
+        if (this.allComments == 0) {
+            this.allComments = 1;
+            return;
+        }
+        else {
+            this.allComments = 0;
+        }
+    };
+
+    $scope.newComment = function () {
+        if (this.submitNewComment == 0) {
+            this.submitNewComment = 1;
+        }
+        else {
+            this.submitNewComment = 0;
+        }
+    };
 
     $scope.upVote = function(info){
         info.votes++;
@@ -69,40 +101,5 @@ app.controller('Reddit', function ($scope) {
             $scope.formClick = 0;
         }
     };
-
-    $scope.showComments = function () {
-        console.log(this)
-        console.log(this.allComments)
-        if (this.allComments === 0) {
-            this.allComments = 1;
-            return;
-        }
-        else {
-            this.allComments = 0;
-        }
-    };
-
-    $scope.newComment = function () {
-        console.log(this)
-        console.log(this.submitNewComment)
-        if (this.submitNewComment === 0) {
-            this.submitNewComment = 1;
-        }
-        else {
-            this.submitNewComment = 0;
-        }
-    };
-
-    $scope.addComment = function (comments) {
-        if (this.person && this.message) {
-            var comment = {};
-            comment.person = this.person;
-            comment.message = this.message;
-            comments.push(comment);
-            this.submitNewComment = 0;
-            this.person = "";
-            this.message = "";
-            this.allComments = 0;
-        }
-    };
 });
+
