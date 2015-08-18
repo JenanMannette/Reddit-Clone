@@ -50,7 +50,7 @@
         <h3>{{info.title}}</h3> | <i class="fa fa-arrow-up" ng-click="upVote(info)"></i> <i class="fa fa-arrow-down" ng-click="downVote(info)"></i><span ng-class="{pos: info.votes > 0, neg: info.votes < 0}"> {{info.votes}}</span>
         <p>By: {{info.author}}</p>
         <p>{{info.description}}</p>
-        <i class="fa fa-ca,lendar"></i> <span>{{info.date}}</span> | <a ng-click="showComments = !showComments"><i class="fa fa-commenting"></i> {{info.comments.length}}
+        <i class="fa fa-calendar"></i> <span>{{info.date}}</span> | <a ng-click="showComments = !showComments"><i class="fa fa-commenting"></i> {{info.comments.length}}
             <ng-pluralize count="info.comments.length" when="
                 {
                 '1': 'Comment',
@@ -59,9 +59,9 @@
             </ng-pluralize></a> | <a ng-click="newComment = !newComment"><i class="fa fa-pencil"></i> Add Comment</a>
 
         <div ng-show="showComments" ng-repeat="comment in info.comments" class="comments">
-                <ul>
-                    <li>{{comment.person}} says "{{comment.message}}"</li>
-                </ul>
+            <ul>
+                <li>{{comment.person}} says "{{comment.message}}"</li>
+            </ul>
         </div>
 
         <form ng-init="newComment = false" ng-show="newComment" ng-submit="addComment(info.comments)" class="comments">
