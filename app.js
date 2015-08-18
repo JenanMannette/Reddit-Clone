@@ -69,25 +69,6 @@ app.controller('Reddit', function ($scope) {
         }
     };
 
-    $scope.showComments = function () {
-        if (this.allComments == 0) {
-            this.allComments = 1;
-            return;
-        }
-        else {
-            this.allComments = 0;
-        }
-    };
-
-    $scope.newComment = function () {
-        if (this.submitNewComment == 0) {
-            this.submitNewComment = 1;
-        }
-        else {
-            this.submitNewComment = 0;
-        }
-    };
-
     $scope.upVote = function(info){
         info.votes++;
     };
