@@ -64,7 +64,6 @@ app.controller('Reddit', function ($scope) {
             comments.push(comment);
             this.person = "";
             this.message = "";
-            this.allComments = 0;
         }
     };
 
